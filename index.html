@@ -6,14 +6,44 @@
   <title>Баклажан — агентство маркетплейсов</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
+    /* Farmer appear with delay */
     @keyframes fadeInRightSoft {
       0% { opacity: 0; transform: translateX(60px) scale(0.97); }
       100% { opacity: 1; transform: translateX(0) scale(1); }
     }
-    .animate-fadeInRightSoft {
-      animation: fadeInRightSoft 1.8s ease-out 3s both; /* задержка 3 секунды */
+    .animate-fadeInRightSoft { animation: fadeInRightSoft 1.8s ease-out 3s both; }
+
+    /* Gentle swing for eggplants (applied to image wrapper) */
+    @keyframes gentleSwing {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(1.2deg); }
+      100% { transform: rotate(0deg); }
+    }
+    .animate-swing { animation: gentleSwing 4s ease-in-out infinite; transform-origin: 50% 10%; }
+
+    /* Spotlight effect */
+    @keyframes spotlight {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    .spotlight::after {
+      content: "";
+      position: absolute; inset: 0;
+      border-radius: 1.5rem;
+      background: radial-gradient( circle at 60% 30%, rgba(255,255,255,0.35), rgba(255,255,255,0.08) 35%, rgba(0,0,0,0) 60% );
+      mix-blend-mode: screen;
+      animation: spotlight 1.5s ease-out 3.2s both;
+      pointer-events: none;
     }
 
+    /* Glowing CTA */
+    @keyframes glowPulse {
+      0%,100% { box-shadow: 0 0 0 rgba(255, 214, 0, 0.0), 0 10px 30px rgba(0,0,0,0.25); }
+      50% { box-shadow: 0 0 24px rgba(255, 214, 0, 0.8), 0 12px 34px rgba(0,0,0,0.35); }
+    }
+    .animate-glow { animation: glowPulse 2.2s ease-in-out infinite; }
+
+    /* Floating telegram button */
     @keyframes floatBtn { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
     .animate-float { animation: floatBtn 2.5s ease-in-out infinite; }
   </style>
@@ -38,32 +68,30 @@
         Запускаем, упаковываем и выводим товары в ТОП Wildberries, Ozon.
       </p>
 
+      <!-- COMBINED GLOW CTA -->
       <div class="mt-8">
-        <a href="https://t.me/AugustRomero" class="inline-flex items-center gap-3 bg-yellow-300 text-purple-900 font-bold px-8 py-4 rounded-2xl text-lg shadow-2xl">
+        <a href="https://t.me/AugustRomero" class="inline-flex items-center gap-3 bg-yellow-300 text-purple-900 font-bold px-8 py-4 rounded-2xl text-lg shadow-2xl animate-glow">
           <span class="text-xl">🍆</span>
           Новое! Реклама в Telegram Ads — Собрать урожай
         </a>
       </div>
 
-      <div class="mt-12 grid sm:grid-cols-3 gap-4">
+      <!-- CARDS -->
+      <div class="mt-12 grid sm:grid-cols-2 gap-4 max-w-xl">
         <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur p-4 rounded-2xl">
           <div class="font-semibold">Запуск под ключ</div>
-          <div class="text-purple-200 text-sm mt-1">Стратегия, каналы и креативы</div>
         </div>
         <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur p-4 rounded-2xl">
-          <div class="font-semibold">Снижение CPL</div>
-          <div class="text-purple-200 text-sm mt-1">Оптимизация и удешевление лида</div>
-        </div>
-        <div class="bg-white bg-opacity-10 backdrop-filter backdrop-blur p-4 rounded-2xl">
-          <div class="font-semibold">Масштабирование</div>
-          <div class="text-purple-200 text-sm mt-1">Рост объёма без потери ROMI</div>
+          <div class="font-semibold">от 5000 рублей бюджет</div>
         </div>
       </div>
     </div>
 
     <!-- RIGHT FARMER WITH EGGPLANTS -->
-    <div class="relative animate-fadeInRightSoft">
-      <img src="./farmer.jpg" class="rounded-3xl shadow-2xl" alt="Счастливый фермер с баклажанами">
+    <div class="relative animate-fadeInRightSoft spotlight">
+      <div class="animate-swing">
+        <img src="./farmer.jpg" class="rounded-3xl shadow-2xl" alt="Счастливый фермер с баклажанами">
+      </div>
     </div>
 
   </div>
