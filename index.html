@@ -6,16 +6,9 @@
   <title>Баклажан — агентство маркетплейсов</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    @keyframes fadeInRight {
-      from { opacity: 0; transform: translateX(40px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
+    @keyframes fadeInRight { from { opacity:0; transform: translateX(40px);} to { opacity:1; transform: translateX(0);} }
     .animate-fadeInRight { animation: fadeInRight 1s ease-out both; }
-
-    @keyframes floatBtn {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
-    }
+    @keyframes floatBtn { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
     .animate-float { animation: floatBtn 2.5s ease-in-out infinite; }
   </style>
 </head>
@@ -39,14 +32,13 @@
         Запускаем, упаковываем и выводим товары в ТОП Wildberries, Ozon.
       </p>
 
-      <!-- NEW TELEGRAM ADS BADGE -->
       <div class="mt-4 inline-block bg-yellow-300 text-purple-900 font-semibold px-4 py-2 rounded-xl">
         Новое! Реклама в Telegram Ads
       </div>
 
       <div class="mt-8 flex gap-4">
         <a href="https://t.me/AugustRomero" class="bg-white text-purple-800 font-semibold px-8 py-4 rounded-2xl text-lg shadow-lg">
-          Получить аудит
+          Собрать урожай
         </a>
       </div>
 
@@ -66,17 +58,17 @@
       </div>
     </div>
 
-    <!-- RIGHT FARMER IMAGE (VISIBLE) -->
+    <!-- RIGHT FARMER WITH EGGPLANTS -->
     <div class="relative animate-fadeInRight">
-      <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?q=80&w=1200&auto=format&fit=crop" class="rounded-3xl shadow-2xl" alt="Счастливый фермер с баклажанами">
+      <img src="/mnt/data/A_photograph_of_a_Caucasian_farmer_with_a_fit_phys.png" class="rounded-3xl shadow-2xl" alt="Счастливый фермер с баклажанами">
     </div>
 
   </div>
 </section>
 
-<!-- FLOATING TELEGRAM BUTTON -->
+<!-- FLOATING BUTTON WITH EGGPLANT -->
 <a href="https://t.me/AugustRomero" class="fixed bottom-6 right-6 bg-white text-purple-800 font-semibold px-6 py-4 rounded-full shadow-2xl flex items-center gap-3 animate-float">
-  <span class="text-2xl">✈️</span>
+  <span class="text-2xl">🍆</span>
   Написать
 </a>
 
