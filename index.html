@@ -6,8 +6,14 @@
   <title>Баклажан — агентство маркетплейсов</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    @keyframes fadeInRight { from { opacity:0; transform: translateX(40px);} to { opacity:1; transform: translateX(0);} }
-    .animate-fadeInRight { animation: fadeInRight 1s ease-out both; }
+    @keyframes fadeInRightSoft {
+      0% { opacity: 0; transform: translateX(60px) scale(0.97); }
+      100% { opacity: 1; transform: translateX(0) scale(1); }
+    }
+    .animate-fadeInRightSoft {
+      animation: fadeInRightSoft 1.8s ease-out 3s both; /* задержка 3 секунды */
+    }
+
     @keyframes floatBtn { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
     .animate-float { animation: floatBtn 2.5s ease-in-out infinite; }
   </style>
@@ -32,7 +38,6 @@
         Запускаем, упаковываем и выводим товары в ТОП Wildberries, Ozon.
       </p>
 
-      <!-- COMBINED MAIN CTA -->
       <div class="mt-8">
         <a href="https://t.me/AugustRomero" class="inline-flex items-center gap-3 bg-yellow-300 text-purple-900 font-bold px-8 py-4 rounded-2xl text-lg shadow-2xl">
           <span class="text-xl">🍆</span>
@@ -57,9 +62,8 @@
     </div>
 
     <!-- RIGHT FARMER WITH EGGPLANTS -->
-    <div class="relative animate-fadeInRight">
-      <!-- ВАЖНО: файл farmer.jpg должен лежать рядом с index.html в репозитории -->
-      <img src="farmer.jpg" class="rounded-3xl shadow-2xl" alt="Счастливый фермер с баклажанами">
+    <div class="relative animate-fadeInRightSoft">
+      <img src="./farmer.jpg" class="rounded-3xl shadow-2xl" alt="Счастливый фермер с баклажанами">
     </div>
 
   </div>
