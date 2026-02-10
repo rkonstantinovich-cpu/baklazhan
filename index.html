@@ -13,35 +13,30 @@
     }
     .animate-fadeInRightSoft { animation: fadeInRightSoft 1.8s ease-out 3s both; }
 
-    /* Gentle swing for eggplants (applied to image wrapper) */
-    @keyframes gentleSwing {
-      0% { transform: rotate(0deg); }
-      50% { transform: rotate(1.2deg); }
-      100% { transform: rotate(0deg); }
-    }
+    /* Gentle swing */
+    @keyframes gentleSwing { 0%{transform:rotate(0)} 50%{transform:rotate(1.2deg)} 100%{transform:rotate(0)} }
     .animate-swing { animation: gentleSwing 4s ease-in-out infinite; transform-origin: 50% 10%; }
 
-    /* Spotlight effect */
-    @keyframes spotlight {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-    .spotlight::after {
-      content: "";
-      position: absolute; inset: 0;
-      border-radius: 1.5rem;
-      background: radial-gradient( circle at 60% 30%, rgba(255,255,255,0.35), rgba(255,255,255,0.08) 35%, rgba(0,0,0,0) 60% );
-      mix-blend-mode: screen;
-      animation: spotlight 1.5s ease-out 3.2s both;
-      pointer-events: none;
+    /* Spotlight */
+    @keyframes spotlight { from{opacity:0} to{opacity:1} }
+    .spotlight::after{
+      content:""; position:absolute; inset:0; border-radius:1.5rem;
+      background: radial-gradient(circle at 60% 30%, rgba(255,255,255,0.35), rgba(255,255,255,0.08) 35%, rgba(0,0,0,0) 60%);
+      mix-blend-mode:screen; animation:spotlight 1.5s ease-out 3.2s both; pointer-events:none;
     }
 
     /* Glowing CTA */
-    @keyframes glowPulse {
-      0%,100% { box-shadow: 0 0 0 rgba(255, 214, 0, 0.0), 0 10px 30px rgba(0,0,0,0.25); }
-      50% { box-shadow: 0 0 24px rgba(255, 214, 0, 0.8), 0 12px 34px rgba(0,0,0,0.35); }
-    }
-    .animate-glow { animation: glowPulse 2.2s ease-in-out infinite; }
+    @keyframes glowPulse { 0%,100%{ box-shadow:0 0 0 rgba(255,214,0,0),0 10px 30px rgba(0,0,0,.25)} 50%{ box-shadow:0 0 28px rgba(255,214,0,.9),0 14px 36px rgba(0,0,0,.35)} }
+    .animate-glow{ animation:glowPulse 2.2s ease-in-out infinite; }
+
+    /* Background floating eggplants */
+    .bg-eggplant{ position:fixed; inset:0; pointer-events:none; overflow:hidden }
+    .egg{ position:absolute; font-size:28px; opacity:.18; animation: floatEgg 12s linear infinite }
+    @keyframes floatEgg{ 0%{ transform: translateY(20vh) translateX(0)} 50%{ transform: translateY(-10vh) translateX(20px)} 100%{ transform: translateY(20vh) translateX(0)} }
+
+    /* Focus overlay on CTA hover */
+    .focus-dim{ position:fixed; inset:0; background:rgba(10,0,30,.45); opacity:0; transition:opacity .25s ease; pointer-events:none }
+    .cta-wrap:hover ~ .focus-dim{ opacity:1 }
 
     /* Floating telegram button */
     @keyframes floatBtn { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
@@ -50,7 +45,15 @@
 </head>
 <body class="min-h-screen bg-gradient-to-br from-purple-700 via-fuchsia-700 to-indigo-800 text-white">
 
-<section class="min-h-screen flex items-center">
+<!-- floating background eggplants -->
+<div class="bg-eggplant">
+  <div class="egg" style="left:10%; top:20%; animation-delay:0s">🍆</div>
+  <div class="egg" style="left:25%; top:70%; animation-delay:2s">🍆</div>
+  <div class="egg" style="left:60%; top:15%; animation-delay:4s">🍆</div>
+  <div class="egg" style="left:80%; top:60%; animation-delay:1s">🍆</div>
+</div>
+
+<section class="min-h-screen flex items-center relative">
   <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center">
 
     <!-- LEFT -->
@@ -69,7 +72,7 @@
       </p>
 
       <!-- COMBINED GLOW CTA -->
-      <div class="mt-8">
+      <div class="mt-8 cta-wrap">
         <a href="https://t.me/AugustRomero" class="inline-flex items-center gap-3 bg-yellow-300 text-purple-900 font-bold px-8 py-4 rounded-2xl text-lg shadow-2xl animate-glow">
           <span class="text-xl">🍆</span>
           Новое! Реклама в Telegram Ads — Собрать урожай
@@ -95,6 +98,7 @@
     </div>
 
   </div>
+  <div class="focus-dim"></div>
 </section>
 
 <!-- FLOATING BUTTON WITH EGGPLANT -->
